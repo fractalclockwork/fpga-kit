@@ -1,0 +1,234 @@
+# Local cache index. Bytes live in archive/cache/ and are not committed.
+# sha256 is filled in archive/cache/status.json after a successful fetch.
+items:
+  - id: nexys3-manual
+    kind: doc
+    board: nexys3
+    url: https://digilent.com/reference/_media/nexys:nexys3:nexys3_rm.pdf
+    path: archive/cache/docs/nexys3/nexys3_rm.pdf
+    sha256: ""
+    license: vendor-docs
+  - id: nexys3-schematic
+    kind: doc
+    board: nexys3
+    url: https://digilent.com/reference/_media/reference/programmable-logic/nexys-3/nexys3_sch.pdf
+    path: archive/cache/docs/nexys3/nexys3_sch.pdf
+    sha256: ""
+    license: vendor-docs
+  - id: nexys3-photo
+    kind: image
+    board: nexys3
+    url: https://digilent.com/reference/programmable-logic/nexys-3/start
+    path: archive/cache/images/nexys3/board.jpg
+    sha256: ""
+    license: vendor-docs
+    manual: true
+    optional: true
+  - id: spartan3e-ug230
+    kind: doc
+    board: spartan3e
+    url: https://digilent.com/reference/_media/reference/programmable-logic/spartan-3e/s3estarter_ug.pdf
+    path: archive/cache/docs/spartan3e/s3estarter_ug.pdf
+    sha256: ""
+    license: vendor-docs
+  - id: spartan3e-schematic
+    kind: doc
+    board: spartan3e
+    url: https://digilent.com/reference/_media/s3e:spartan-3e_sch.pdf
+    path: archive/cache/docs/spartan3e/spartan-3e_sch.pdf
+    sha256: ""
+    license: vendor-docs
+  - id: spartan3-sell-sheet
+    kind: doc
+    board: spartan3
+    url: https://digilent.com/reference/_media/spartan-3:spartan3_ds.pdf
+    path: archive/cache/docs/spartan3/spartan3_ds.pdf
+    sha256: ""
+    license: vendor-docs
+  - id: spartan3-ug130
+    kind: doc
+    board: spartan3
+    url: https://www.infinity-semiconductor.com/datasheet/6a-HW-SPAR3-SK-UNI-G.pdf
+    path: archive/cache/docs/spartan3/ug130.pdf
+    sha256: ""
+    license: vendor-docs
+    optional: true
+  - id: spartan3-schematic
+    kind: doc
+    board: spartan3
+    url: https://digilent.com/reference/_media/spartan-3/s3board-sch.pdf
+    path: archive/cache/docs/spartan3/s3board-sch.pdf
+    sha256: ""
+    license: vendor-docs
+    optional: true
+  - id: vdec1-manual
+    kind: doc
+    board: vdec1
+    url: https://download.kamami.pl/p60090-digilent_210_080_reference_manual.pdf
+    path: archive/cache/docs/vdec1/vdec1_rm.pdf
+    sha256: ""
+    license: vendor-docs
+  - id: vdec1-schematic
+    kind: doc
+    board: vdec1
+    url: https://download.kamami.pl/p60090-digilent_210_080_sch.pdf
+    path: archive/cache/docs/vdec1/vdec1_sch.pdf
+    sha256: ""
+    license: vendor-docs
+  - id: xc2xl-manual
+    kind: doc
+    board: xc2xl
+    url: https://digilent.com/reference/_media/xc2xl/xc2xl_rm.pdf
+    path: archive/cache/docs/xc2xl/xc2xl_rm.pdf
+    sha256: ""
+    license: vendor-docs
+  - id: xc2xl-sell-sheet
+    kind: doc
+    board: xc2xl
+    url: https://digilent.com/reference/_media/xc2xl:xc2xl_ds.pdf
+    path: archive/cache/docs/xc2xl/xc2xl_ds.pdf
+    sha256: ""
+    license: vendor-docs
+  - id: xc2xl-schematic
+    kind: doc
+    board: xc2xl
+    url: http://www.digilentinc.com/Data/Products/XC2XL/XC2XL-sch.pdf
+    path: archive/cache/docs/xc2xl/xc2xl_sch.pdf
+    sha256: ""
+    license: vendor-docs
+    optional: true
+  - id: dbb1-manual
+    kind: doc
+    board: dbb1
+    url: https://digilent.com/reference/_media/dbb1/dbb1-rm.pdf
+    path: archive/cache/docs/dbb1/dbb1-rm.pdf
+    sha256: ""
+    license: vendor-docs
+  - id: dbb1-schematic
+    kind: doc
+    board: dbb1
+    url: https://digilent.com/reference/_media/dbb1/dbb1-sch.pdf
+    path: archive/cache/docs/dbb1/dbb1-sch.pdf
+    sha256: ""
+    license: vendor-docs
+  - id: dbb1-sell-sheet
+    kind: doc
+    board: dbb1
+    url: https://digilent.com/reference/_media/dbb1/dbb1-dwr1-brochure.pdf
+    path: archive/cache/docs/dbb1/dbb1-dwr1-brochure.pdf
+    sha256: ""
+    license: vendor-docs
+  - id: bss138-product
+    kind: doc
+    board: bss138
+    url: https://media.digikey.com/pdf/Data%20Sheets/Adafruit%20PDFs/757_Web.pdf
+    path: archive/cache/docs/bss138/757_Web.pdf
+    sha256: ""
+    license: vendor-docs
+  - id: bss138-datasheet
+    kind: doc
+    board: bss138
+    url: https://cdn-shop.adafruit.com/datasheets/BSS138.pdf
+    path: archive/cache/docs/bss138/BSS138.pdf
+    sha256: ""
+    license: vendor-docs
+  - id: bss138-an10441
+    kind: doc
+    board: bss138
+    url: https://assets.nexperia.com/documents/application-note/AN10441.pdf
+    path: archive/cache/docs/bss138/AN10441.pdf
+    sha256: ""
+    license: vendor-docs
+  - id: bss138-an97055
+    kind: doc
+    board: bss138
+    url: https://cdn-shop.adafruit.com/datasheets/an97055.pdf
+    path: archive/cache/docs/bss138/an97055.pdf
+    sha256: ""
+    license: vendor-docs
+  - id: bss138-schematic
+    kind: doc
+    board: bss138
+    url: https://raw.githubusercontent.com/adafruit/4-Channel-Level-Shifter-PCB/master/Adafruit%20FET%204-Channel%20Shifter.sch
+    path: archive/cache/docs/bss138/4-channel-shifter.sch
+    sha256: ""
+    license: cc-by-sa
+  - id: bss138-board
+    kind: doc
+    board: bss138
+    url: https://raw.githubusercontent.com/adafruit/4-Channel-Level-Shifter-PCB/master/Adafruit%20FET%204-Channel%20Shifter.brd
+    path: archive/cache/docs/bss138/4-channel-shifter.brd
+    sha256: ""
+    license: cc-by-sa
+  - id: jtag-smt2-manual
+    kind: doc
+    board: jtag-smt2
+    url: https://digilent.com/reference/_media/programmers/jtag-smt2/jtag-smt2_rm.pdf
+    path: archive/cache/docs/jtag-smt2/jtag-smt2_rm.pdf
+    sha256: ""
+    license: vendor-docs
+  - id: jtag-smt2-manual-2021
+    kind: doc
+    board: jtag-smt2
+    url: https://digilent.com/reference/_media/reference/programmers/jtag-smt2/jtag-smt2_rm.pdf
+    path: archive/cache/docs/jtag-smt2/jtag-smt2_rm_2021.pdf
+    sha256: ""
+    license: vendor-docs
+  - id: jtag-smt2-hseda
+    kind: doc
+    board: jtag-smt2
+    url: http://www.hseda.com/product/download_cable/Xilinx-HS2/Xilinx-HS2.html
+    path: archive/cache/docs/jtag-smt2/hseda-jtag-smt2.pdf
+    sha256: ""
+    license: vendor-docs
+    manual: true
+  - id: adv7183b-datasheet
+    kind: doc
+    board: vdec1
+    url: https://www.analog.com/media/en/technical-documentation/data-sheets/ADV7183B.pdf
+    path: archive/cache/docs/vdec1/ADV7183B.pdf
+    sha256: ""
+    license: vendor-docs
+    optional: true
+  - id: ise-14.7-lin
+    kind: sdk
+    board: all
+    url: https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/vivado-design-tools/archive-ise.html
+    path: archive/cache/sdk/Xilinx_ISE_DS_Lin_14.7_1015_1.tar
+    sha256: ""
+    license: proprietary
+    manual: true
+  - id: adept-runtime
+    kind: sdk
+    board: all
+    url: https://digilent.com/reference/software/adept/start
+    path: archive/cache/sdk/digilent.adept.runtime_2.27.9-amd64.deb
+    sha256: ""
+    license: proprietary
+    manual: true
+  - id: adept-utilities
+    kind: sdk
+    board: all
+    url: https://digilent.com/reference/software/adept/start
+    path: archive/cache/sdk/digilent.adept.utilities_2.7.1-amd64.deb
+    sha256: ""
+    license: proprietary
+    manual: true
+  - id: ise-webpack-lic
+    kind: sdk
+    board: all
+    url: ""
+    path: archive/cache/sdk/Xilinx.lic
+    sha256: ""
+    license: proprietary
+    manual: true
+    optional: true
+  - id: ise-image
+    kind: image
+    board: all
+    url: ""
+    path: archive/cache/images/xilinx-ise-hil.tar
+    sha256: ""
+    license: proprietary
+    manual: true
+    optional: true

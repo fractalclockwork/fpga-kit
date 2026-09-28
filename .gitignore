@@ -1,0 +1,15 @@
+.venv/
+.tools/
+archive/cache/
+archive/docs/
+cache/
+_impactbatch.log
+reports/
+__pycache__/
+*.pyc
+.pytest_cache/
+sim/sim_build/
+sim/results.xml
+*.vcd
+*.fst
+*.vvp

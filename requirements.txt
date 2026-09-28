@@ -1,0 +1,4 @@
+PyYAML>=6
+pytest>=7
+pyserial>=3
+cocotb>=1.8,<2

@@ -1,0 +1,45 @@
+id: vdec1
+title: VDEC1
+host: spartan3e
+fpga: xc3s500e-4fg320
+idcode: "01C22093"
+device_name: ADV7183B
+i2c_address: "0x40"
+adept_device: ""
+accept_any_adept_name: true
+jtag_index: 0
+baud: 115200
+clock_hz: 50000000
+uart_name: vdec1
+requires_env: VDEC1_ATTACHED
+top: i2c_probe_top
+ucf: hdl/vdec1/i2c_probe.ucf
+sources:
+  - hdl/common/uart_tx.v
+  - hdl/common/i2c_probe.v
+  - hdl/vdec1/i2c_probe_top.v
+control_buses:
+  - id: i2c-fx2
+    role: control
+    tool: fpga-bitbang
+    address: "0x40"
+    sda_ball: A4
+    scl_ball: D5
+  - id: dce-uart
+    role: runtime
+    tool: pyserial
+    baud: 115200
+image_paths:
+  - id: i2c
+    primary: true
+    volatile: false
+    tool: i2c
+    note: register write on the Spartan-3E after the probe bitstream is loaded. The card has no configuration image.
+phase_seeds_s:
+  xst: 25
+  ngdbuild: 15
+  map: 40
+  par: 90
+  bitgen: 10
+  program: 8
+  serial: 5

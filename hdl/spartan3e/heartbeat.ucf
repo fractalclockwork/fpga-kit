@@ -1,0 +1,5 @@
+NET "clk" LOC = "C9" | IOSTANDARD = LVTTL;
+NET "clk" PERIOD = 20 ns HIGH 40%;
+NET "led" LOC = "F12" | IOSTANDARD = LVTTL | DRIVE = 8 | SLEW = SLOW;
+NET "uart_rx" LOC = "R7" | IOSTANDARD = LVTTL;
+NET "uart_tx" LOC = "M14" | IOSTANDARD = LVTTL | DRIVE = 8 | SLEW = SLOW;

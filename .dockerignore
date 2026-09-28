@@ -1,0 +1,14 @@
+.git
+.venv
+.tools
+cache
+reports
+__pycache__
+*.pyc
+.pytest_cache
+sim/sim_build
+archive/cache/docs
+archive/cache/images
+archive/cache/status.json
+archive/cache/sdk/*.tar
+archive/cache/sdk/*.deb

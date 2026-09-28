@@ -1,0 +1,64 @@
+id: spartan3e
+title: Spartan-3E starter
+fpga: xc3s500e-4fg320
+idcode: "01C22093"
+device_name: XC3S500E
+adept_device: ""
+accept_any_adept_name: true
+jtag_index: 0
+xilinx_usb_vendor: "03fd"
+baud: 115200
+clock_hz: 50000000
+uart_name: s3e
+top: heartbeat_top
+ucf: hdl/spartan3e/heartbeat.ucf
+sources:
+  - hdl/common/uart_rx.v
+  - hdl/common/uart_tx.v
+  - hdl/common/heartbeat.v
+  - hdl/spartan3e/heartbeat_top.v
+control_buses:
+  - id: adept-usb
+    role: program
+    tool: djtgcfg
+    device: ""
+  - id: xilinx-usb
+    role: program
+    tool: impact
+    vendor: "03fd"
+  - id: dce-uart
+    role: runtime
+    tool: pyserial
+    baud: 115200
+image_paths:
+  - id: jtag
+    primary: true
+    volatile: true
+    tool: djtgcfg
+    note: Adept-visible JTAG to index 0. Used only when present finds that bus.
+  - id: jtag-smt2
+    primary: false
+    volatile: true
+    tool: djtgcfg
+    adept_device: JtagSmt2
+    note: Digilent JTAG-SMT2 on alternate header J28. Select it with ADEPT_DEVICE=JtagSmt2.
+  - id: jtag-onboard-xilinx
+    primary: false
+    note: onboard Xilinx USB programmer. Recorded when enumerated. Not driven by djtgcfg.
+  - id: platform-flash
+    primary: false
+    note: two XCF04S devices, master serial, XC2C64A on the configuration path
+  - id: bpi
+    primary: false
+    note: parallel NOR StrataFlash
+  - id: spi
+    primary: false
+    note: SPI serial flash
+phase_seeds_s:
+  xst: 25
+  ngdbuild: 15
+  map: 40
+  par: 90
+  bitgen: 10
+  program: 8
+  serial: 5

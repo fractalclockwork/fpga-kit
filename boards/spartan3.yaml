@@ -1,0 +1,51 @@
+id: spartan3
+title: Spartan-3 starter
+fpga: xc3s200-4ft256
+idcode: "01414093"
+device_name: XC3S200
+adept_device: JtagHs2
+accept_any_adept_name: true
+jtag_index: 0
+baud: 115200
+clock_hz: 50000000
+uart_name: spartan3
+top: heartbeat_top
+ucf: hdl/spartan3/heartbeat.ucf
+sources:
+  - hdl/common/uart_rx.v
+  - hdl/common/uart_tx.v
+  - hdl/common/heartbeat.v
+  - hdl/spartan3/heartbeat_top.v
+control_buses:
+  - id: jtag-cable
+    role: program
+    tool: djtgcfg
+    device: JtagHs2
+  - id: rs232
+    role: runtime
+    tool: pyserial
+    baud: 115200
+image_paths:
+  - id: jtag
+    primary: true
+    volatile: true
+    tool: djtgcfg
+    note: external cable to index 0, the XC3S200. Index 1 is the XCF02S and is not the primary path.
+    adept_device: JtagHs2
+  - id: jtag-smt2
+    primary: false
+    volatile: true
+    tool: djtgcfg
+    adept_device: JtagSmt2
+    note: Digilent JTAG-SMT2 on the board JTAG header. Select it with ADEPT_DEVICE=JtagSmt2.
+  - id: platform-flash
+    primary: false
+    note: master serial from the 2 Mbit XCF02S Platform Flash
+phase_seeds_s:
+  xst: 20
+  ngdbuild: 15
+  map: 35
+  par: 80
+  bitgen: 10
+  program: 8
+  serial: 5

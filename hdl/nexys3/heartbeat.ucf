@@ -1,0 +1,6 @@
+NET "clk" LOC = "V10" | IOSTANDARD = LVCMOS33;
+NET "clk" TNM_NET = "clk";
+TIMESPEC "TS_clk" = PERIOD "clk" 10 ns HIGH 50%;
+NET "led" LOC = "U16" | IOSTANDARD = LVCMOS33;
+NET "uart_rx" LOC = "N17" | IOSTANDARD = LVCMOS33;
+NET "uart_tx" LOC = "N18" | IOSTANDARD = LVCMOS33;

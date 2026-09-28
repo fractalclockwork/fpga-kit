@@ -87,4 +87,3 @@ ChipScope, Prometheus, and Grafana are not part of this bring-up. The JSON metri
 - A USB-UART tty left on the host (`HIL_SERIAL=/dev/ttyUSB0`). `djtgcfg` programs the FPGA. Nothing in the container opens the serial node
 
 The ISE 14.7 Linux tarball comes from your AMD account. Adept runtime and utilities `.deb` packages come from the [Adept 2 page](https://digilent.com/reference/software/adept/start). Put both in `archive/cache/sdk/` under the names in the manifest. `make image` fails with the manifest id when one of them is missing. After the image builds, `make archive-image` runs `docker save` into the cache.
-# fpga-kit
