@@ -14,7 +14,7 @@ Lessons: [logic and LUTs](../learn/01-logic-and-luts.md), [clocks and timing](..
 | JTAG chain | Index 0 is the XC3S200. Index 1 is the XCF02S Platform Flash (2 Mbit). Program index 0 for the bring-up |
 | Memory | 1 MB asynchronous SRAM, two ISSI IS61LV25616 devices, usable as one 256K x 32 bank or two 256K x 16 banks |
 | Peripherals | VGA, PS/2, RS-232, eight LEDs, four buttons, eight switches, four-digit display |
-| Expansion | Three 40-pin headers (A1, A2, B1). A [Breadboard 1](dbb1.md) plugs into these. No Hirose FX2 and no VHDCI, so a VDEC1 does not mate here |
+| Expansion | Three 40-pin headers (A1, A2, B1). A [Breadboard 1](dbb1.md) plugs into these. The XC2-XL ribbon map on that page is verified; the Spartan-3 plugs are not tone-checked yet. No Hirose FX2 and no VHDCI, so a VDEC1 does not mate here |
 | Programming | External JTAG header. A Digilent JTAG-USB or JTAG-HS cable, default Adept name `JtagHs2`, or a [JTAG-SMT2](../programmers/jtag-smt2.md) with `ADEPT_DEVICE=JtagSmt2` |
 | Serial | DB9 through a MAX3232. The host needs a USB-RS232 adapter. FPGA TXD is ball R13, RXD is ball T13 |
 

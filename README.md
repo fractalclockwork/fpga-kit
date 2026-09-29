@@ -1,6 +1,6 @@
 # FPGA Kits
 
-Catalog, lessons, and a dev-host bring-up path for retired Digilent boards. The FPGAs are Spartan-3, Spartan-3E, and Spartan-6. The XC2-XL is a CoolRunner-II and XC9500XL CPLD board. The toolchain is Xilinx ISE WebPACK 14.7, which includes EDK for MicroBlaze and the CPLD fitter for the XC2-XL. Vivado does not support these families. USB programming of the FPGAs uses Digilent Adept 2 (`djtgcfg`). A [JTAG-SMT2](docs/programmers/jtag-smt2.md) on a board JTAG header is the alternate programmer: `ADEPT_DEVICE=JtagSmt2`.
+Catalog, lessons, and a dev-host bring-up path for retired Digilent boards. The FPGAs are Spartan-3, Spartan-3E, and Spartan-6. The XC2-XL is a CoolRunner-II and XC9500XL CPLD board. The toolchain is Xilinx ISE WebPACK 14.7, which includes EDK for MicroBlaze and the CPLD fitter for the XC2-XL. Vivado does not support these families. USB programming of the FPGAs uses Digilent Adept 2 (`djtgcfg`), including onboard ports where they work. The preferred external JTAG cable is a [Bus Blaster v4.1a](docs/programmers/bus-blaster-v4.md) (`xc3sprog -c bbv2`): it is required for XC9500XL and is the one cable used for both CPLDs on the XC2-XL. A [JTAG-SMT2](docs/programmers/jtag-smt2.md) remains an Adept-compatible alternate on Digilent headers (`ADEPT_DEVICE=JtagSmt2`) but cannot target XC9500XL.
 
 Vendor pages for these parts go stale. The archive caches manuals, photos, installers, and the built container image on this machine. Lessons explain the concepts and the math in this repo's own words and cite those cached files. They do not copy the manuals.
 
@@ -12,7 +12,7 @@ Vendor pages for these parts go stale. The archive caches manuals, photos, insta
 | [Spartan-3E starter](docs/boards/spartan3e.md) | XC3S500E-4FG320 | Onboard USB JTAG, Hirose FX2 host for VDEC1 |
 | [Spartan-3 starter](docs/boards/spartan3.md) | XC3S200-4FT256 | External Digilent JTAG cable and a USB-RS232 adapter |
 | [VDEC1](docs/boards/vdec1.md) | ADV7183B video decoder | Daughtercard. The only host in this set is the Spartan-3E |
-| [XC2-XL](docs/boards/xc2xl.md) | XC2C256-TQ144 and XC9572XL-VQ44 | 6-pin JTAG header. Catalog and archive. Outside the FPGA stage order |
+| [XC2-XL](docs/boards/xc2xl.md) | XC2C256-TQ144 and XC9572XL-VQ44 | 6-pin JTAG header. Bus Blaster on J1. Outside the FPGA stage order |
 | [Breadboard 1](docs/boards/dbb1.md) | Passive 40-pin accessory (DBB1) | Plugs into the XC2-XL or Spartan-3 headers. No bitstream |
 | [BSS138 shifter](docs/boards/bss138.md) | Adafruit 757, four BSS138 channels | 3.3 V XC2C256 side to 5 V TTL. No bitstream |
 

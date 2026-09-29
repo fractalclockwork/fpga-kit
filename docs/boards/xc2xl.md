@@ -32,7 +32,7 @@ Both devices ship with a factory pattern that flashes the LEDs at rates selected
 
 JTAG figure 3 draws TDI into the XC2C256 and that device's TDO into the XC9572XL. JP5, JP6, JP9, and JP10 can leave either device out of the chain. The four jumper settings in the figure are both devices, XC2C256 only, XC9572XL only, and an invalid combination.
 
-A [JTAG-SMT2](../programmers/jtag-smt2.md) on J1 can program the XC2C256. The 2021 SMT2 manual says the module cannot target an XC9500XL, so the XC9572XL jumper setting for that path is XC2C256 only.
+A [Bus Blaster v4.1a](../programmers/bus-blaster-v4.md) on J1 is the programmer for both CPLDs. A [JTAG-SMT2](../programmers/jtag-smt2.md) can reach the XC2C256 only; the 2021 SMT2 manual says the module cannot target an XC9500XL. Do not use the SMT2 on this board going forward.
 
 ## SDK and manuals
 
@@ -49,26 +49,29 @@ The Digilent `xc2xl` media namespace has the six-page reference manual and the o
 
 The probe image walks one high along J4 pins 5 through 40, about 0.6 s on each pin at 1.8432 MHz, in that pin order. Pins 1–3 are ground, VU, and 3.3 V. Pin 4 is the button. With no clock, pin 5 stays high and pins 6–40 stay low. `LD2` flashes on its own, about 3.5 times a second, and stays on with no clock. That LED is active low: 3.3 V into the anode, then 510 Ω from the cathode into pin 92 (schematic I/O I01516). JP7 ties the oscillator output to pin 38 (`XCCLK`). JP8 ties that same output to the XC9572XL (`XLCLK`). Pin 92's driver is the VIO1 bank (pins 27, 55, 73, and 93). JP2 ties VIO1 to the 3.3 V regulator. J4 pins 5–40 are the VIO2 bank. `LD3` is on VIO2 as well.
 
-| J4 pin | Signal | XC2C256 pin | Cable |
+| Digilent J4 | Signal | XC2C256 pin | A2 silk |
 | --- | --- | --- | --- |
 | 1 | GND | — | GND |
-| 5 | `uart_rx` | 142 (B5) | converter TX |
-| 6 | `uart_tx` | 140 (B6) | converter RX |
+| 3 | VDD33 | — | VDD |
+| 5 | `uart_rx` | 142 (B5) | **PA35** |
+| 6 | `uart_tx` | 140 (B6) | **PA36** |
 
-Pin 2 is VU from the wall plug, pin 3 is 3.3 V, and pin 4 is the GSR button. None of those are UART pins. Pins 140 and 142 sit on VIO2, which is 3.3 V. CoolRunner-II inputs are not 5 V tolerant: the absolute maximum on an I/O pin is 4.0 V. J4 is cabled to [Breadboard 1](dbb1.md) connector A2, pin 1 to pin 1. The silkscreen legend on that header is PA, and the pins are numbered 1–40: pin 1 is GND, pin 3 is 3.3 V, pin 5 is `uart_rx`, and pin 6 is `uart_tx`. J5 is cabled to B2 the same way. The [BSS138 level shifter](bss138.md) sits on the breadboard between those A2 pins and 5 V TTL. Its LV pin is A2 pin 3, GND is A2 pin 1, one low-side channel is A2 pin 6, and the other is A2 pin 5. HV is the TTL supply. A2 pin 2 is VU from the wall plug, 5 V to 9 V, and is not HV. A TTL TX wired straight to A2 pin 5, with no shifter, still needs a divider: 2.2 kΩ from the TTL TX to pin 5, and 3.3 kΩ from pin 5 to pin 1. That puts about 3.0 V on the pin.
+Pin 2 is VU (A2 silk VV), and pin 4 is the GSR button (A2 PA38). None of those are UART pins. Pins 140 and 142 sit on VIO2, which is 3.3 V. CoolRunner-II inputs are not 5 V tolerant: the absolute maximum on an I/O pin is 4.0 V. J4 is cabled to [Breadboard 1](dbb1.md) connector A2 with a verified end-reversed pair map: Digilent 5/6 → **PA35/PA36**, Digilent 39/40/37/38 → **PA1/PA2/PA3/PA4**. Digilent socket numbering on J3/J4/J6 is correct. The [BSS138 level shifter](bss138.md) sits between A2 **PA35/PA36** and 5 V TTL, with LV on silk VDD and GND on silk GND. HV is the TTL supply. Silk VV is VU from the wall plug and is not HV. A TTL TX wired straight to PA35, with no shifter, still needs a divider: 2.2 kΩ from the TTL TX to PA35, and 3.3 kΩ from PA35 to silk GND. That puts about 3.0 V on the pin.
 
-The XC9572XL inputs are 5 V tolerant, and they land on J5, not J4. There is no board trace between the two CPLDs' user I/O. The JTAG-SMT2 can program the XC2C256 and cannot target the XC9572XL. CoolRunner work is stopped. The XC2C256 holds the LD2 blink JEDEC `reports/xc2xl/20260928T013200Z/project.jed` (pin 92, active low, about 3.5 Hz from the 1.8432 MHz clock). Fuse readback matched that file except one trailing bit, and LD2 stays dark. The factory blink on that device is gone. LD3 is the XC9572XL and was still running its factory pattern. The J4 UART table stays for a later breadboard test. Do not resume it until LD3 is seen flashing under the parked plan.
+The XC9572XL inputs are 5 V tolerant, and they land on J5, not J4. There is no board trace between the two CPLDs' user I/O. Program both CPLDs with the [Bus Blaster v4.1a](../programmers/bus-blaster-v4.md) and `xc3sprog -c bbv2` on J1: CoolRunner at `-p 0` (IDCODE `06d4c093`), XC9572XL at `-p 1` (IDCODE `49604093`). The JTAG-SMT2 cannot target XC9500XL and is not used on this board going forward.
 
 ## Bring-up
 
 This board is outside the FPGA stage order. `make stage` accepts `nexys3`, `spartan3e`, `spartan3`, and `vdec1`. `make cpld BOARD=xc2xl` fits a JEDEC file for the XC2C256 only. Do not write `stage.json` for this board unless a real pass happens.
 
-## Parked: XC9572XL
+## XC9572XL
 
-Use this only if the CoolRunner stays unusable. The XC9572XL is the smaller part, and it is the fallback because its inputs are 5 V tolerant and its LED was already flashing. Do not start this until asked.
+Verified on the Bus Blaster with both devices in the chain.
 
-1. Leave the factory image in the XC9572XL until a blink JEDEC exists and the Bus Blaster enumerates that chip. LD3 flashing is the proof that pin 44 still drives. Erasing first throws that proof away.
-2. Fit a blink for the XC9572XL only. Clock is pin 1 (`XLCLK`, JP8), the button is pin 33, and LD3 is pin 44, active low through 510 Ω. Take the speed grade from the chip marking. I/O standard is LVCMOS33. Do not reuse an XC2C256 JEDEC.
-3. Program with the Bus Blaster v4.1a and `xc3sprog`, from the JEDEC file. The buffer image is the usual JTAG-key load. J1 is the 6-pin 3.3 V header; the Bus Blaster plug is the 20-pin ARM header, so TMS, TCK, TDI, TDO, ground, and 3.3 V are wired across. The chain still includes the XC2C256 unless JP5, JP6, JP9, and JP10 leave only the XC9572XL in it. Program the position whose IDCODE is the XC9572XL. Adept named that device index 1, IDCODE `49604093`.
-4. The JTAG-SMT2 and `djtgcfg` do not program this family. The Bus Pirate v3.6 is not the programmer for it.
-5. The pass is LD3 flashing from the new image. UART on J5 is the step after that, and only then. J5 is the 5 V-tolerant header. The breadboard BSS138 path stays parked with the CoolRunner.
+| Check | Result |
+| --- | --- |
+| Scan | `-p 0` XC2C256 `06d4c093`, `-p 1` XC9572XL `49604093` |
+| LD3 blink | Clock pin 1 (`XLCLK`, JP8), LED pin 44 active low. `hdl/xc2xl/xl_blink_top.v`. About 3.5 Hz at 1.8432 MHz. Fit as `xc9572xl-10-VQ44`. Leave `IOSTANDARD` off the UCF; XC9500XL rejects `LVCMOS33` there and `cpldfit -iostd` (CoolRunner-only) |
+| J5 loopback | Short Digilent **J5-5 to J5-6** (C5/C6, CPLD pins 43/42). `hdl/xc2xl/xl_loop_top.v`. LD3 flashes when the short is on and stays dark when open. The match must survive TX-edge skew: clear `matched` only after many consecutive mismatches (`bad` counter), the same sticky fix as the CoolRunner PA35/PA36 loopback |
+
+UART on J5 is the next step. A HELLO/PONG image the size of the CoolRunner compact UART (~75 macrocells) will not fit in 72; a stripped TX path should. J5 is 5 V tolerant, so that path does not need the BSS138.

@@ -1,0 +1,6 @@
+# XC9572XL-VQ44. JP8 -> P1 (XLCLK). LD3 = P44 active low.
+# Leave IOSTANDARD off the UCF; XC9500XL rejects LVCMOS33 here and
+# cpldfit -iostd (CoolRunner-only).
+NET "clk" LOC = "P1";
+NET "clk" PERIOD = 542.535 ns;
+NET "led" LOC = "P44";

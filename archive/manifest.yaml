@@ -182,6 +182,22 @@ items:
     sha256: ""
     license: vendor-docs
     manual: true
+  - id: bus-blaster-v41a-manual
+    kind: doc
+    board: bus-blaster
+    url: http://dangerousprototypes.com/docs/Bus_Blaster_v4_design_overview
+    path: archive/cache/docs/bus-blaster/bus-blaster-v4-design-overview.pdf
+    sha256: ""
+    license: cc-by-sa
+    manual: true
+  - id: bus-blaster-v41a-schematic
+    kind: doc
+    board: bus-blaster
+    url: https://raw.githubusercontent.com/DangerousPrototypes/Bus_Blaster/master/hardware/BusBlasterv4.1a.sch.png
+    path: archive/cache/docs/bus-blaster/BusBlasterv4.1a.pdf
+    sha256: ""
+    license: cc-by-sa
+    manual: true
   - id: adv7183b-datasheet
     kind: doc
     board: vdec1

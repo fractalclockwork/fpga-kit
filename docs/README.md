@@ -7,7 +7,8 @@ Board pages, lessons, the local archive, and the host-driven hardware-in-the-loo
 | Boards | [nexys3](boards/nexys3.md), [spartan3e](boards/spartan3e.md), [spartan3](boards/spartan3.md), [vdec1](boards/vdec1.md), [xc2xl](boards/xc2xl.md), [dbb1](boards/dbb1.md), [bss138](boards/bss138.md) |
 | Concepts | [Lessons](learn/README.md) |
 | Cached manuals and installers | [Archive](../archive/README.md) |
-| JTAG-SMT2 programmer | [jtag-smt2](programmers/jtag-smt2.md). Digilent module, plus the Huasheng bench pod. On 27 Sep 2026 that pod's status LED is green |
+| Bus Blaster v4.1a | [bus-blaster-v4](programmers/bus-blaster-v4.md). Preferred external JTAG. Required for XC9500XL; programs both CPLDs on the XC2-XL |
+| JTAG-SMT2 programmer | [jtag-smt2](programmers/jtag-smt2.md). Adept-compatible alternate on Digilent headers. Cannot target XC9500XL |
 | Stages, container, and flash | [Pipeline](pipeline.md) |
 | JSON and JUnit records | [Reports](reports.md) |
 
@@ -19,7 +20,7 @@ Board pages, lessons, the local archive, and the host-driven hardware-in-the-loo
 | `spartan3e` | XC3S500E-4FG320 | 50 MHz | Onboard USB JTAG, or a JTAG-SMT2 on header J28. `djtgcfg` uses the name `enum` prints |
 | `spartan3` | XC3S200-4FT256 | 50 MHz | External Digilent JTAG cable (`JtagHs2`) or a JTAG-SMT2, plus a USB-RS232 adapter |
 | `vdec1` | ADV7183B | 27 MHz on the decoder | Daughtercard on the Spartan-3E Hirose FX2 header. The bitstream is the host FPGA's I2C probe |
-| `xc2xl` | XC2C256-TQ144 and XC9572XL-VQ44 | 1.8432 MHz socket | 6-pin JTAG header J1. Reference manual and sell sheet are in the archive. `make stage` does not take this id |
+| `xc2xl` | XC2C256-TQ144 and XC9572XL-VQ44 | 1.8432 MHz socket | Bus Blaster on J1 (`xc3sprog -c bbv2`). CoolRunner `-p 0`, XC9572XL `-p 1`. `make stage` does not take this id |
 | `dbb1` | Passive breadboard | Host clock | Plugs into the XC2-XL A/B headers or the Spartan-3 A1, A2, and B1 headers. No bitstream. `make stage` does not take this id |
 | `bss138` | Four BSS138 channels | — | Adafruit 757. Low side on the XC2-XL 3.3 V rail, high side on 5 V TTL. `make stage` does not take this id |
 

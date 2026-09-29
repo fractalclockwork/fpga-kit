@@ -11,6 +11,7 @@ jtag_index: 0
 jtag_header: J1
 sources:
   - hdl/xc2xl/heartbeat_top.v
+  # Compact UART top is self-contained; common/heartbeat does not fit XC2C256.
 devices:
   - id: ic2
     part: XC2C256
@@ -29,12 +30,12 @@ devices:
     led_pin: "44"
     led: LD3
 image_paths:
-  - id: jtag-jedec
+  - id: bus-blaster
     primary: true
     volatile: false
-    note: JEDEC program through the 6-pin header J1. The pattern remains after power is removed.
+    note: Bus Blaster v4.1a on J1 with xc3sprog -c bbv2. CoolRunner at -p 0, XC9572XL at -p 1. Preferred path for both CPLDs.
   - id: jtag-smt2
     primary: false
     volatile: false
     adept_device: JtagSmt2
-    note: JTAG-SMT2 can reach the XC2C256. The 2021 manual says this module cannot target an XC9500XL, so jumper the XC9572XL out of the chain first.
+    note: Adept alternate for the XC2C256 only. Cannot target XC9500XL. Not used on this board going forward.

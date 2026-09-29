@@ -14,7 +14,7 @@ Git tracks `archive/manifest.yaml`. The files themselves live in `archive/cache/
 
 | Kind | What goes here |
 | --- | --- |
-| `doc` | Reference manuals, UG230, UG130, the XC2-XL manual and sell sheet, the Breadboard 1 manual, schematic, and sell sheet, the BSS138 datasheet and level-shifter app notes, the JTAG-SMT2 manuals, the Huasheng bench-pod plates, schematics, master UCF zips, the ADV7183B datasheet |
+| `doc` | Reference manuals, UG230, UG130, the XC2-XL manual and sell sheet, the Breadboard 1 manual, schematic, and sell sheet, the BSS138 datasheet and level-shifter app notes, the JTAG-SMT2 manuals, the Huasheng bench-pod plates, the Bus Blaster v4.1a design overview and schematic, schematics, master UCF zips, the ADV7183B datasheet |
 | `image` | Board photos, and the `docker save` of the ISE image |
 | `sdk` | ISE 14.7 Linux tarball and Adept runtime and utilities. Proprietary. Not committed |
 | `binary` | Bitstreams this repo builds, kept beside the run report. A vendor demo bitstream is added only when the reference center still publishes a stable file |

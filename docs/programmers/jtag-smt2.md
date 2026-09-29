@@ -1,6 +1,8 @@
 # JTAG-SMT2
 
-Digilent programming module for Xilinx parts, document 502-251, revision D. The February 19, 2026 edition is archive id `jtag-smt2-manual`. The February 25, 2021 edition is archive id `jtag-smt2-manual-2021` and is the copy that still lists which devices the module can target. Xilinx iMPACT, ChipScope, and EDK drive it, and so does Digilent Adept. `djtgcfg` is the bring-up's programmer. The module is the alternate USB path for the boards that expose a JTAG header.
+Digilent programming module for Xilinx parts, document 502-251, revision D. The February 19, 2026 edition is archive id `jtag-smt2-manual`. The February 25, 2021 edition is archive id `jtag-smt2-manual-2021` and is the copy that still lists which devices the module can target. Xilinx iMPACT, ChipScope, and EDK drive it, and so does Digilent Adept. `djtgcfg` is the bring-up's Adept programmer.
+
+On this bench the preferred external JTAG cable is the [Bus Blaster v4.1a](bus-blaster-v4.md), because that cable is required for XC9500XL. The SMT2 remains an Adept-compatible alternate on Digilent headers (`ADEPT_DEVICE=JtagSmt2`) when a stage still uses `djtgcfg`. It cannot target a 9500 or 9500XL CPLD.
 
 The SMT2 is a surface-mount module with a micro-AB USB port. The stand-alone cable built from the same circuit is the JTAG-HS2. Pad 11, Vdd, is a 3.3 V supply from the host board (2.97 V to 3.63 V). Pad 9, VREF, sets the JTAG signal level and may be 1.65 V to 5.5 V. On these boards the JTAG bank is 3.3 V, so Vdd and VREF both tie to that 3.3 V rail.
 
@@ -24,7 +26,7 @@ GPIO2 is the Zynq `PS_SRST_B` pin when Xilinx tools expect it. None of these boa
 
 ## What it can program
 
-The 2021 edition's supported-target list includes Xilinx FPGAs, CoolRunner-II CPLDs, and Platform Flash ISP PROMs. The same page says the module cannot target a Xilinx 9500 or 9500XL CPLD. That is why the XC9572XL on the [XC2-XL](../boards/xc2xl.md) has to be jumpered out of the chain before this module programs the XC2C256. The 2026 edition no longer prints that list.
+The 2021 edition's supported-target list includes Xilinx FPGAs, CoolRunner-II CPLDs, and Platform Flash ISP PROMs. The same page says the module cannot target a Xilinx 9500 or 9500XL CPLD. That is why this bench prefers the [Bus Blaster](bus-blaster-v4.md) for the [XC2-XL](../boards/xc2xl.md): one cable reaches both the XC2C256 and the XC9572XL. Do not use the SMT2 on that board going forward. The 2026 edition no longer prints the supported-target list.
 
 Adept's device name is the token `djtgcfg enum` prints. This repo's alternate path uses `JtagSmt2`. If enum prints a different token, set `ADEPT_DEVICE` to that token. `present` initializes that device, and the image stage programs the name `present` recorded.
 
@@ -42,7 +44,7 @@ Leave `ADEPT_DEVICE` unset to keep the board's onboard port or its default cable
 | [Nexys 3](../boards/nexys3.md) | J7, 6-pin | Index 0, the XC6SLX16. Onboard USB remains the primary path |
 | [Spartan-3E](../boards/spartan3e.md) | J28, the alternate JTAG header in UG230 | Index 0, the XC3S500E. The VDEC1 has no JTAG port; this still programs the host FPGA |
 | [Spartan-3](../boards/spartan3.md) | The board's external JTAG header | Index 0, the XC3S200. Index 1 is the XCF02S |
-| [XC2-XL](../boards/xc2xl.md) | J1 | The XC2C256, with the XC9572XL bypassed. Outside the FPGA stage order |
+| [XC2-XL](../boards/xc2xl.md) | J1 | Not used going forward. Prefer the [Bus Blaster](bus-blaster-v4.md) for both CPLDs |
 
 Nexys 3 schematic Rev B labels J7 as pin 1 TMS, pin 2 TDI, pin 3 TDO, pin 4 TCK, pin 5 GND, pin 6 VCC3V3. Those nets are not in SMT2 pad order. Wire TMS to TMS, TCK to TCK, TDI to TDI, TDO to TDO, GND to GND, and both Vdd and VREF to pin 6.
 

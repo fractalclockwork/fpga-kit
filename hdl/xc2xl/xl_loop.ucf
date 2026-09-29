@@ -1,0 +1,8 @@
+# XC9572XL-VQ44 J5 loopback. JP8 -> P1 (XLCLK). LD3 = P44 active low.
+# Digilent J5-5 = loop_rx (P43 / C5). Digilent J5-6 = loop_tx (P42 / C6).
+NET "clk" LOC = "P1";
+NET "clk" PERIOD = 542.535 ns;
+NET "led" LOC = "P44";
+NET "loop_rx" LOC = "P43";
+NET "loop_rx" PULLUP;
+NET "loop_tx" LOC = "P42";
